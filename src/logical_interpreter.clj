@@ -4,10 +4,16 @@
 (defn check-fact-integrity
   "Validate the fact semantic integrity"
   [potential-fact]
-  (def re #"^\w+\(.+\).$")
-  (empty? (re-matches  re  potential-fact))
+  (def re #"\w+\(.+\)$")
+  (not (empty? (re-matches  re  potential-fact)))
   )
 
+(defn check-rule-integrity
+  "Validate the rule semantic integrity"
+  [potential-rule]
+  (def re #"\w+\(.+\):-(\w+\(.+\))+")
+  (not (empty? (re-matches  re  potential-rule)))
+  )
 
 (defn split-clean [chain re]
   "Given a chain split by the expresion and clean the whities"
@@ -45,8 +51,15 @@
   "Returns true if the rules and facts in database imply query, false if not. If
   either input can't be parsed, returns nil"
   [database query]
-  (def coll database-as-a-list database)
-  (println even? check-fact-integrity coll)
+  (def coll (database-as-a-list database))
+  (println coll)
+  (def m (map check-fact-integrity coll))
+  ;(println coll)
+  ;(println m)
+  (if (every? false? m) nil)
+  (if (not (check-fact-integrity query)) nil)
+  (def coll-facts (filter check-fact-integrity coll))
+  (println coll-facts)
   )
 
 

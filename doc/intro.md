@@ -1,3 +1,4 @@
 # Introduction to funcional-template
 
-TODO: write documentation
+[*] filtrar los facts y rules
+
