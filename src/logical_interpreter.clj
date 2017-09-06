@@ -45,7 +45,8 @@
   "Returns true if the rules and facts in database imply query, false if not. If
   either input can't be parsed, returns nil"
   [database query]
-  (println (check-fact-integrity (database-as-a-list database)))
+  (def coll database-as-a-list database)
+  (println even? check-fact-integrity coll)
   )
 
 
