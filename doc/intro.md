@@ -2,7 +2,7 @@
 This is a logical interpreter like prolog, but did it for
 a practical work at FIUBA. The idea was understand the
 functional  paradigm and learn to design applications under
-that paradigm.
+that paradigm. But, you know.
 
 
 ### Basic Flow
