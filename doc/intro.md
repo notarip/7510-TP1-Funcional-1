@@ -1,33 +1,31 @@
-# Introduction to funcional-template
+## Logical Interpreter
+This is a logical interpreter like prolog, but did it for
+a practical work at FIUBA. The idea was understand the
+functional  paradigm and learn to design applications under
+that paradigm.
 
-[*] filtrar los facts y rules (fact-rule-test)
- lein test fact-rule-test:
-    tratando de separar los parametros de entrada para el reeemplazo
+### Test
+#### Mandatories
+- [x] incomplete-database-test
+- [x] number-database-test
+- [x] parent-database-test
 
-Test
-[*] incomplete-database-test
-[ ] number-database-test
-[*] parent-database-test
+#### Mine
+- [x] database-test
+- [x] fact-rule-test
+- [x] basic-test
+- [x] reader-test
 
-[*] database-test
-[*] fact-rule-test -> check-fact-rule-integrity me quede ahi !!
-hay que ver por que no valida bien la DB
-[*] basic-test
-[*] reader-test
+#### Basic Flow
+- Validate the database
+- Validate the query
+- Clean the database -> separate facts and rules
+- Load rules with facts that must accomplish
+- Evaluate query as a rule
+- Evaluate query as a fact
+- Return by or
 
-rule1(X,Y):-f1(Y,X),f2(X,Y).
-## a map
-{"rule1":
-    {cantParam: 2,
-     facts:("f1(2,1)", "f2(1,2)")
-    }
-"rule2":
-    {.
-    .
-    }
-}
-
-- en la evaluacion de la rule:
-    * buscas en el mapa de rules
-    * recorres los parametros y reemplazas en la lista de facts
-    * despues hay que evaluar la lista de facts (con un every?)
+#### To Do List
+- [ ] [Refactor] move utilities functions to other ns
+- [ ] [Task] measure test coverage
+- [ ] [Improvment] Give more abstraction to rules and facts
