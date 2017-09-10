@@ -22,6 +22,11 @@
   (not (empty? (re-matches  re  potential-rule)))
   )
 
+
+(defn replace-whities [s]
+  (clojure.string/replace s #" " "")
+  )
+
 (defn split-clean [chain re]
   "Given a chain split by the expresion and clean the whities"
   (remove empty? (clojure.string/split chain re))
@@ -150,18 +155,27 @@
   "Returns true if the rules and facts in database imply query, false if not. If
   either input can't be parsed, returns nil"
   [database query]
-  (def coll (database-as-a-list database))
+
+  (def clean-database (replace-whities database))
+  (def clean-query (replace-whities query))
+
+  (println clean-database)
+  (println clean-query)
+  (def coll (database-as-a-list clean-database ))
   (def m (map check-fact-rule-integrity coll))
 
-  ;  (if (every? false? m) nil)
- ; (if (not (check-fact-integrity query)) nil)
-
+  (def db-ok (every? true? m))
+  (def query-ok (check-fact-integrity  clean-query))
   (def evaluate-query-response nil)
-  (when (every? false? m)
-    (when-not (check-fact-integrity query)
+
+  (println "Database status... " (if db-ok "Ok" "Wrong"))
+  (println "Query sintaxis.... " (if query-ok "Ok" "Wrong"))
+
+  (when db-ok
+    (when query-ok
       (def coll-facts (map str (filter-facts coll)))
               (def m-rules (create-rules-map coll ))
-              (def evaluate-query-response (execute-query query coll-facts m-rules))
+              (def evaluate-query-response (execute-query clean-query coll-facts m-rules))
       )
     )
    evaluate-query-response

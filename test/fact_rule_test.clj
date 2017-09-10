@@ -22,6 +22,7 @@
     (is (= (evaluate-query complete-database "varon(bart)") true))
  ))
 
+
 (deftest fact-true-test
   (testing "quering for a fact that exists"
            (is (= (evaluate-query complete-database "varon(bart)") true))

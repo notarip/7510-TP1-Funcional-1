@@ -7,10 +7,10 @@
 Test
 [*] incomplete-database-test
 [ ] number-database-test
-[ ] parent-database-test
+[*] parent-database-test
 
 [*] database-test
-[x] fact-rule-test -> check-fact-rule-integrity me quede ahi !!
+[*] fact-rule-test -> check-fact-rule-integrity me quede ahi !!
 hay que ver por que no valida bien la DB
 [*] basic-test
 [*] reader-test
